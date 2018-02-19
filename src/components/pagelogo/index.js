@@ -1,0 +1,1 @@
+export { Pagelogo } from './pagelogo.component';

@@ -1,0 +1,1 @@
+export { HeaderSecondary } from './header-secondary.component';

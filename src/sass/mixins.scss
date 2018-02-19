@@ -1,0 +1,16 @@
+@mixin Oswald_Normak($font-size) {
+    font-family: Oswald;
+    font-weight: normal;
+    font-size: $font-size;
+}
+
+@mixin Oswald_Bold($font-size) {
+    font-family: Oswald;
+    font-weight: bold;
+    font-size: $font-size;
+}
+
+@mixin Stencil($font-size) {
+    font-family: Oswald Stencil;
+    font-size: $font-size;
+}

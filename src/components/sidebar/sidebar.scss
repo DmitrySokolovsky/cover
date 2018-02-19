@@ -1,0 +1,28 @@
+@import '../../sass/varaibles.scss';
+@import '../../sass/mixins.scss';
+
+.sidebar {
+    width: 15%;
+    background-color: $colorDarkGrey;
+
+    &__nav {
+        width: 100%;
+    }
+
+    &__item {
+        @include Oswald_Bold(2rem);
+
+        color: white;
+        text-transform: capitalize;
+        padding: .8rem 0;
+        padding-left: 1rem;
+        cursor: pointer;
+        transition: all .4s;
+
+        &:hover {
+            color: $colorDarkGrey;
+            background-color: white;
+            transform: translateX(.8rem);
+        }
+    }
+}

@@ -1,0 +1,50 @@
+@import '../../sass/varaibles.scss';
+
+.user-nav {
+    display: flex;
+    align-items: center;
+    margin-right: 3rem;
+
+    &__icon {
+        fill: $colorDarkBlue;
+        height: 2.5rem;
+        width: 2.5rem;
+
+        &--circle-border {
+            width: 3rem;
+            height: 3rem;
+            border: 1px solid $colorRed;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
+    &__user-nick {
+        font-size: 1.8rem;
+        margin-left: .8rem;
+    }
+
+    & > * {
+        padding: 0 1rem;
+        cursor: pointer;
+    }
+
+    &__icon-box {
+        display: flex;
+        align-items: center;
+        position: relative;
+    }
+
+    &__notification {
+        position: absolute;
+        height: 1.6rem;
+        width: 1.6rem;
+        background-color: $colorRed;border-radius: 3px;
+        color: white;
+        top: -.3rem;
+        right: 0;
+        text-align: center;
+    }
+}

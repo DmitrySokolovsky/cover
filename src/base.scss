@@ -1,0 +1,40 @@
+@import './sass/varaibles.scss';
+@import './sass/mixins.scss';
+
+@font-face {
+    font-family: Oswald;
+    src: url('./assets/font/Oswald-Regular.ttf');
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: Oswald;
+    src: url('./assets/font/Oswald-Light.ttf');
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: Oswald Stencil;
+    src: url('./assets/font/Oswald-Stencil.ttf');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%; /* 1rem = 10px , 10px/16px = 0.625*/
+}
+
+body {
+    font-family: Oswald;
+    line-height: normal;
+}

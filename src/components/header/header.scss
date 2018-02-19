@@ -1,0 +1,21 @@
+@import '../../sass/varaibles.scss';
+@import '../../sass/mixins.scss';
+
+.header {
+    height: $headerHeight;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid $colorDarkGrey;
+
+    &__logo {
+        margin-left: 3rem;
+        color: $colorDarkBlue;
+        @include Stencil(3rem);
+
+        &--red {
+            color: $colorRed;
+        }
+    }
+}

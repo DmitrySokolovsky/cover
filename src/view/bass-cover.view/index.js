@@ -1,0 +1,1 @@
+export { BassCoverView } from './bass-cover.view';
