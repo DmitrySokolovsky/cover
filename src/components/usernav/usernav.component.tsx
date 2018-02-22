@@ -2,6 +2,8 @@ import * as React from 'react';
 import '../../sass/varaibles.scss';
 import './usernav.scss';
 
+import { Chat } from '../';
+
 import { IUsernavProps, IUsernavState } from './usernav.model';
 
 const messageLogo = require('../../assets/img/sprite.svg');
@@ -16,6 +18,8 @@ export class Usernav extends React.Component<IUsernavProps, IUsernavState> {
     }
 
     public render(): JSX.Element {
+        const socket: any = this.props.socket;
+
         return (
             <nav className="user-nav">
                 <div className="user-nav__icon-box">
@@ -23,6 +27,7 @@ export class Usernav extends React.Component<IUsernavProps, IUsernavState> {
                         <use xlinkHref={messageLogo + "#icon-bubble"}/>
                     </svg>
                     <span className="user-nav__notification">{this.state.messages}</span>
+                    <Chat socket={socket}/>
                 </div>
                 <div className="user-nav__icon-box">               
                     <svg className="user-nav__icon">

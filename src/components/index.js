@@ -4,3 +4,4 @@ export * from './usernav';
 export * from './sidebar';
 export * from './header-secondary';
 export * from './pagelogo';
+export * from './chat';

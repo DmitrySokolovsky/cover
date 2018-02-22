@@ -4,5 +4,5 @@ export interface IUsernavState {
 }
 
 export interface IUsernavProps {
-    
+    socket: any;
 }

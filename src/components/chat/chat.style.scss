@@ -1,0 +1,28 @@
+.chat {
+    position: absolute;
+    width: 20vw;
+    height: 70vh;
+    background-color: white;
+    border: 1px solid black;
+    top: 2.5rem;
+    right: 3.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__message-list {
+        width: 100%;
+        height: 100%;
+        background-color: burlywood;
+    }
+
+    &__button {
+        border: none;
+        outline: none;
+        border-radius: 100px;
+        height: 4rem;
+        width: 70%;
+        padding: 1rem 1rem;
+        margin-bottom: .5rem;
+    }
+}

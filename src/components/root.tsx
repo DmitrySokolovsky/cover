@@ -6,10 +6,16 @@ import { Sidebar } from './sidebar/sidebar.component';
 import './root.scss';
 const url = 'http://localhost:3231';
 const io = require('socket.io-client');
+import { IRootProps, IRootState } from './root.model';
 
-export class Root extends React.Component {
-    constructor(props: {}) {
+export class Root extends React.Component<IRootProps, IRootState> {
+
+    constructor(props: IRootProps) {
         super(props);
+
+        this.state = {
+            socket: null
+        } as IRootState;
     }
     
     componentDidMount() {
@@ -21,12 +27,16 @@ export class Root extends React.Component {
         socket.on('connect', () => {
             console.log('CONNECTED');
         });
+
+        this.setState({ socket: socket });
     }
 
     public render(): JSX.Element {
+        const socket: any = this.state.socket;
+
         return (
             <div className="app">
-                <Header/>
+                <Header socket={socket}/>
                 <div className="main-content">
                     <Sidebar/>
                 </div>
