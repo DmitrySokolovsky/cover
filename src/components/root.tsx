@@ -1,7 +1,6 @@
 import * as React from 'react';
 
-import { Header } from './';
-import { Sidebar } from './sidebar/sidebar.component';
+import { Header, Sidebar, LoginForm } from './';
 
 import './root.scss';
 const url = 'http://localhost:3231';
@@ -14,6 +13,7 @@ export class Root extends React.Component<IRootProps, IRootState> {
         super(props);
 
         this.state = {
+            user: null,
             socket: null
         } as IRootState;
     }
@@ -35,13 +35,19 @@ export class Root extends React.Component<IRootProps, IRootState> {
         const socket: any = this.state.socket;
 
         return (
-            <div className="app">
-                <Header socket={socket}/>
-                <div className="main-content">
-                    <Sidebar/>
-                </div>
-                
+            <div className="container">
+                {
+                    this.state.user === null ? 
+                    <LoginForm socket={socket}/> :
+                    <div className="app">
+                        <Header socket={socket}/>
+                        <div className="main-content">
+                            <Sidebar/>
+                        </div>                
+                    </div> 
+                }
             </div>
+            
         );
     }
 }
