@@ -1,21 +1,21 @@
 import * as React from 'react';
+import { VERIFY_USER, USER_CONNECTED } from '../services/events';
 
 import { Header, Sidebar, LoginForm } from './';
 
 import './root.scss';
 const url = 'http://localhost:3231';
 const io = require('socket.io-client');
-import { IRootProps, IRootState } from './root.model';
 
-export class Root extends React.Component<IRootProps, IRootState> {
+export class Root extends React.Component {
 
-    constructor(props: IRootProps) {
+    constructor(props) {
         super(props);
 
         this.state = {
             user: null,
             socket: null
-        } as IRootState;
+        };
     }
     
     componentDidMount() {
@@ -27,18 +27,24 @@ export class Root extends React.Component<IRootProps, IRootState> {
         socket.on('connect', () => {
             console.log('CONNECTED');
         });
-
+        
         this.setState({ socket: socket });
     }
 
-    public render(): JSX.Element {
-        const socket: any = this.state.socket;
+    setUser = (user) => {
+        const socket = this.state.socket;
+        socket.emit(USER_CONNECTED, user);
+        this.setState({ user });
+    }
+
+    render() {
+        const socket = this.state.socket;
 
         return (
             <div className="container">
                 {
                     this.state.user === null ? 
-                    <LoginForm socket={socket}/> :
+                    <LoginForm socket={socket} setUser={this.setUser} /> :
                     <div className="app">
                         <Header socket={socket}/>
                         <div className="main-content">

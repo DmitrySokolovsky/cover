@@ -5,7 +5,9 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const autoprefixer = require('autoprefixer');
  
 module.exports = {
-    entry: { app: path.join(__dirname, 'src/', 'index') },
+    entry: {
+        app: './src/index.js'
+    },
     output: {
         filename: 'bundle.js',
         path: path.resolve(__dirname, 'build')
@@ -15,15 +17,9 @@ module.exports = {
     module: {
         rules: [
         {
-            test: /\.js$/, 
-            exclude: /node_modules/, 
-            use: 'ts-loader'
-        },
-    
-        {
-            test: /\.tsx?$/, 
-            exclude: /node_modules/, 
-            use: 'ts-loader'
+            test: /\.jsx?$/,
+            exclude: [path.resolve(__dirname, "node_modules")],
+            loader: "babel-loader"            
         },
         
         {
@@ -91,6 +87,6 @@ module.exports = {
     ],
     resolve:{
         modules: ['node_modules'],
-        extensions: ['.tsx', '.ts', '.js']
+        extensions: ['.jsx', '.js']
     }
 };

@@ -2,17 +2,15 @@ import * as React from 'react';
 import { Search, Usernav } from '../';
 import './header.scss';
 
-import { IHeaderProps, IHeaderState } from './header.model';
-
 const logo = require('../../assets/img/logo.png');
 
-export class Header extends React.Component<IHeaderProps, IHeaderState> {
-    constructor(props: IHeaderProps) {
+export class Header extends React.Component {
+    constructor(props) {
         super(props);
     }
 
-    public render(): JSX.Element {
-        const socket: {} = this.props.socket;
+    render() {
+        const socket = this.props.socket;
 
         return (
             <header className="header">

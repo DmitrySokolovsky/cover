@@ -1,24 +1,21 @@
 import * as React from 'react';
-import '../../sass/varaibles.scss';
 import './usernav.scss';
 
 import { Chat } from '../';
 
-import { IUsernavProps, IUsernavState } from './usernav.model';
-
 const messageLogo = require('../../assets/img/sprite.svg');
 
-export class Usernav extends React.Component<IUsernavProps, IUsernavState> {
-    constructor(props: IUsernavProps) {
+export class Usernav extends React.Component {
+    constructor(props) {
         super(props);
         this.state = {
             messages: 5,
             covers: 4
-        } as IUsernavState;
+        };
     }
 
-    public render(): JSX.Element {
-        const socket: any = this.props.socket;
+    render() {
+        const socket = this.props.socket;
 
         return (
             <nav className="user-nav">

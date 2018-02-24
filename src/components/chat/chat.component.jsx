@@ -1,23 +1,21 @@
-import * as React from 'react';
+import React from 'react';
 import './chat.style.scss';
 
-import { IChatProps, IChatState } from './chat.model';
-
-export class Chat extends React.Component<IChatProps, IChatState> {
-    constructor(props: IChatProps) {
+export class Chat extends React.Component {
+    constructor(props) {
         super(props);     
         this.state = {
             message: ""
-        } as IChatState;
+        };
     }    
 
-    onChange = (e: React.FormEvent<HTMLInputElement>) => {
+    onChange = (e) => {
         this.setState({ message: e.currentTarget.value });
         console.log( e.currentTarget.value);
     }
 
-    public render(): JSX.Element {       
-        const socket: any = this.props.socket; 
+    render() {       
+        const socket = this.props.socket; 
         return (
             <div className="chat">
                 <div className="chat__message-list"></div>

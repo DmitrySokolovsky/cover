@@ -1,14 +1,12 @@
 import * as React from 'react';
-import './header-secondary.model';
 import './header-secondary.style.scss';
-import { IHeaderSecondaryProps, IHeaderSecondaryState } from './header-secondary.model';
 
-export class HeaderSecondary extends React.Component<IHeaderSecondaryProps, IHeaderSecondaryState> {
-    constructor(props: IHeaderSecondaryProps) {
+export class HeaderSecondary extends React.Component {
+    constructor(props) {
         super(props);
     }
 
-    public render(): JSX.Element {
+    render() {
         return (
             <div className="header-secondary">
                 <nav className="header-secondary__nav">

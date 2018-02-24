@@ -1,17 +1,15 @@
 import * as React from 'react';
 import './pagelogo.style.scss';
-import { IPagelogoProps, IPagelogoState } from './pagelogo.model';
 
-export class Pagelogo extends React.Component<IPagelogoProps, IPagelogoState> {
-    styles: {};
-    constructor(props: IPagelogoProps) {
+export class Pagelogo extends React.Component {
+    constructor(props) {
         super(props);
         this.styles = {
             backgroundImage: 'url('+this.props.source+')'
         };
     } 
 
-    public render(): JSX.Element {
+     render() {
         return (
             <div className="page-logo__wrapper">
                 <div className="page-logo" style={this.styles}>

@@ -3,11 +3,11 @@ import './search.scss';
 var sprite = require('../../assets/img/sprite.svg');
 
 export class Search extends React.Component {
-    constructor(props: {}) {
+    constructor(props) {
         super (props);
     }
 
-    public render(): JSX.Element {
+    render() {
         return (
             <div className="search__container">
                 <input type="text" name="text-box" className="search" placeholder="search"/>

@@ -2,14 +2,14 @@ import * as React from 'react';
 import './sidebar.scss';
 
 export class Sidebar extends React.Component {
-    sidebarItems: string[];
+    sidebarItems;
 
-    constructor(props: {}) {
+    constructor(props) {
         super(props);  
         this.sidebarItems = ['my profile', 'news', 'covers', 'gear', 'tabs', 'music'];          
     }
 
-    public render(): JSX.Element {
+    render() {
         return (
             <aside className="sidebar">
                 <nav className="sidebar__nav">
