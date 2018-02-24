@@ -8,6 +8,7 @@
     right: 3.5rem;
     display: flex;
     flex-direction: column;
+    flex-shrink: 0;
     align-items: center;
 
     &__message-list {

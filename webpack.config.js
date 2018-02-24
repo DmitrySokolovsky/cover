@@ -29,8 +29,7 @@ module.exports = {
                 options: {
                     name: 'assets/img/[name].[ext]',
                 }
-            }
-            
+            }            
         },
         
         {

@@ -15,8 +15,7 @@ export class Usernav extends React.Component {
     }
 
     render() {
-        const socket = this.props.socket;
-
+        const name = this.props.username;
         return (
             <nav className="user-nav">
                 <div className="user-nav__icon-box">
@@ -24,7 +23,7 @@ export class Usernav extends React.Component {
                         <use xlinkHref={messageLogo + "#icon-bubble"}/>
                     </svg>
                     <span className="user-nav__notification">{this.state.messages}</span>
-                    <Chat socket={socket}/>
+                    <Chat />
                 </div>
                 <div className="user-nav__icon-box">               
                     <svg className="user-nav__icon">
@@ -39,7 +38,7 @@ export class Usernav extends React.Component {
                         </svg>
                     </div>
                      
-                    <span className="user-nav__user-nick">User</span>
+                    <span className="user-nav__user-nick">{name}</span>
                 </div>
             </nav>
         );

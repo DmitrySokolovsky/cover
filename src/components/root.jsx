@@ -34,7 +34,7 @@ export class Root extends React.Component {
     setUser = (user) => {
         const socket = this.state.socket;
         socket.emit(USER_CONNECTED, user);
-        this.setState({ user });
+        this.setState({ user: user });
     }
 
     render() {

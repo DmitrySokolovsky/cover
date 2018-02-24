@@ -31,7 +31,7 @@ export class LoginForm extends React.Component {
     setUser = (user) => {
         const { name, password } = this.state;
         if(user) {
-            this.props.setUser({ name, password });
+            this.props.setUser({ user });
         } else {
             console.log('damned');
         }
@@ -40,7 +40,7 @@ export class LoginForm extends React.Component {
     render() {
         return (
             <div className="login-form">
-                <form className="login-form__wrapper">
+                <form onSubmit={this.handleSubmit} className="login-form__wrapper">
                     <div className="login-form__item">
                         <label htmlFor="name" className="login-form__label">Name</label>
                         <input type="text" id="name" className="login-form__input" onChange={this.handleNameChange}/>
@@ -50,7 +50,7 @@ export class LoginForm extends React.Component {
                         <input type="text" id="password" className="login-form__input" onChange={this.handlePasswordChange}/>
                     </div>  
                     <div className="login-form__item">
-                        <button className="login-form__button" onSubmit={this.handleSubmit}>Log In</button>
+                        <button className="login-form__button">Log In</button>
                     </div> 
                     <div className="login-form__item login-form__item--flex">
                         <p className="login-form__option">Register</p>
