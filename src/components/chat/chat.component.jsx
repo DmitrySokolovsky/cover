@@ -18,9 +18,6 @@ export class Chat extends React.Component {
         const socket = this.props.socket; 
         return (
             <div className="chat">
-                <div className="chat__message-list"></div>
-                <input type="text" className="chat__input" onChange={this.onChange}/>
-                <button className="chat__button">Post Message</button>                       
             </div>
         );
     }
