@@ -14,13 +14,7 @@ export class Header extends React.Component {
     }
 
     componentDidMount() {
-        const socket = this.props.socket;
-        
-        socket.on(USER_CONNECTED, (user) => {
-            console.log(user);
-            alert(`Congradulations, ${user.user.name} , you are in`);
-            this.setState({ userName: user.user.name });
-        });
+
     }
 
     render() {

@@ -3,17 +3,21 @@ import { VERIFY_USER, USER_CONNECTED } from '../services/events';
 
 import { Header, Sidebar, LoginForm } from './';
 
+import { connect } from 'react-redux';
+import { getUser } from '../store/actions/verify.actions';
+
 import './root.scss';
+
 const url = 'http://localhost:3231';
 const io = require('socket.io-client');
 
-export class Root extends React.Component {
+export class RootComponent extends React.Component {
 
     constructor(props) {
         super(props);
 
         this.state = {
-            user: null,
+            user: this.props.user,
             socket: null
         };
     }
@@ -27,14 +31,17 @@ export class Root extends React.Component {
         socket.on('connect', () => {
             console.log('CONNECTED');
         });
+
+        console.log(this.state);
+
+        console.log(this.props);
         
         this.setState({ socket: socket });
     }
 
     setUser = (user) => {
-        const socket = this.state.socket;
-        socket.emit(USER_CONNECTED, user);
-        this.setState({ user: user });
+        this.setState({ user: user});
+        console.log(user);
     }
 
     render() {
@@ -43,8 +50,8 @@ export class Root extends React.Component {
         return (
             <div className="container">
                 {
-                    this.state.user === null ? 
-                    <LoginForm socket={socket} setUser={this.setUser} /> :
+                    this.props.user === null? 
+                    <LoginForm socket={socket}/> :
                     <div className="app">
                         <Header socket={socket}/>
                         <div className="main-content">
@@ -57,3 +64,18 @@ export class Root extends React.Component {
         );
     }
 }
+
+const mapToStateProps = (state) => {
+    let user = state.verifyUser.user;
+    return{
+        user
+    };
+}
+
+const mapDispatchToProps = (dispatch) =>({
+    getUser: (user)=> {
+        dispatch(getUser(user))
+    }    
+});
+
+export const Root= connect(mapToStateProps, mapDispatchToProps)(RootComponent);

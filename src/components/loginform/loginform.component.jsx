@@ -1,9 +1,12 @@
 import * as React from 'react';
-import { VERIFY_USER } from '../../services/events';
+import { VERIFY_USER, USER_CONNECTED } from '../../services/events';
 
 import './loginform.style.scss';
 
-export class LoginForm extends React.Component {
+import { connect } from 'react-redux';
+import { getUser } from '../../store/actions/verify.actions';
+
+export class LoginFormComponent extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -12,12 +15,25 @@ export class LoginForm extends React.Component {
         };
     }
 
+    initConnection = () => {
+        const socket = this.props.socket;
+        console.log(this.props);
+        socket.on(USER_CONNECTED, this.setUser);
+    }
+
     handleSubmit = (e) =>{
         e.preventDefault();
         const socket = this.props.socket;
         const { name, password } = this.state;
-        console.log(name + " " + password);
-        socket.emit(VERIFY_USER, name, password, this.setUser);
+        socket.emit(VERIFY_USER, name, password);
+
+        socket.on(USER_CONNECTED, (data) => {
+            console.log(data.name);
+            this.props.getUser({name: data.name});
+            console.log(this.props);
+        });
+
+        console.log(this.props);
     }
 
     handleNameChange = (e) => {
@@ -29,14 +45,12 @@ export class LoginForm extends React.Component {
     }
 
     setUser = (user) => {
-        const { name, password } = this.state;
-        if(user) {
-            this.props.setUser({ user });
-        } else {
-            console.log('damned');
-        }
+        this.props.getUser(user);
     }
 
+    some=()=>{
+        console.log(this.props);
+    }
     render() {
         return (
             <div className="login-form">
@@ -53,7 +67,7 @@ export class LoginForm extends React.Component {
                         <button className="login-form__button">Log In</button>
                     </div> 
                     <div className="login-form__item login-form__item--flex">
-                        <p className="login-form__option">Register</p>
+                        <p className="login-form__option" onClick={this.some}>Register</p>
                         <p className="login-form__option">Forgot password?</p>
                     </div>
                 </form>
@@ -61,3 +75,18 @@ export class LoginForm extends React.Component {
         );
     }
 }
+
+const mapToStateProps = (state) => {
+    let user = state.verifyUser.user;
+    return{
+        user
+    };
+}
+
+const mapDispatchToProps = (dispatch) =>({
+    getUser: (user)=> {
+        dispatch(getUser(user))
+    }    
+});
+
+export const LoginForm = connect(mapToStateProps, mapDispatchToProps)(LoginFormComponent);
