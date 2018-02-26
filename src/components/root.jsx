@@ -62,9 +62,6 @@ const mapToStateProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) =>({
-    getUser: (user) => {
-        dispatch(getUser(user))
-    },
     setSocket: (socket) => {
         dispatch(setSocket(socket))
     }  
