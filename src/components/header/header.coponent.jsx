@@ -8,9 +8,6 @@ const logo = require('../../assets/img/logo.png');
 export class Header extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            userName: ''
-        }
     }
 
     componentDidMount() {
@@ -19,7 +16,6 @@ export class Header extends React.Component {
 
     render() {
         const socket = this.props.socket;
-        const username = this.state.userName;
 
         return (
             <header className="header">
@@ -27,7 +23,7 @@ export class Header extends React.Component {
                     7<span className="header__logo--red">ZONE</span>
                 </div>                
                 <Search />
-                <Usernav username={username}/>
+                <Usernav/>
             </header>
         );
     }

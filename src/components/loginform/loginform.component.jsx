@@ -78,8 +78,10 @@ export class LoginFormComponent extends React.Component {
 
 const mapToStateProps = (state) => {
     let user = state.verifyUser.user;
+    let socket = state.socketApp.socket;
     return{
-        user
+        user,
+        socket
     };
 }
 

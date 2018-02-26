@@ -1,2 +1,2 @@
-export const VERIFY_USER = 'VERYFY_USER';
+export const SET_SOCKET = 'VERYFY_USER';
 export const SET_VERIFIED_USER = 'SET_VERIFIED_USER';

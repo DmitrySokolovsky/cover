@@ -1,21 +1,20 @@
 import { 
-    SET_VERIFIED_USER,
     SET_SOCKET
 } from '../actions/verify.types';
 
 const initialState = {
     state: 'INITIAL',
-    user: null,
     socket: null
 };
 
-export function verifyReducer(state = initialState, action) {
+export function socketReducer(state = initialState, action) {
 
     switch(action.type) {
-        case SET_VERIFIED_USER:
+
+        case SET_SOCKET:
             return {
                 state,
-                user: action.payload
+                socket: action.payload
             }
 
         default:

@@ -4,7 +4,7 @@ import { VERIFY_USER, USER_CONNECTED } from '../services/events';
 import { Header, Sidebar, LoginForm } from './';
 
 import { connect } from 'react-redux';
-import { getUser } from '../store/actions/verify.actions';
+import { getUser, setSocket } from '../store/actions/verify.actions';
 
 import './root.scss';
 
@@ -15,9 +15,7 @@ export class RootComponent extends React.Component {
 
     constructor(props) {
         super(props);
-
         this.state = {
-            user: this.props.user,
             socket: null
         };
     }
@@ -31,29 +29,18 @@ export class RootComponent extends React.Component {
         socket.on('connect', () => {
             console.log('CONNECTED');
         });
-
-        console.log(this.state);
-
-        console.log(this.props);
         
-        this.setState({ socket: socket });
-    }
-
-    setUser = (user) => {
-        this.setState({ user: user});
-        console.log(user);
+        this.props.setSocket(socket);
     }
 
     render() {
-        const socket = this.state.socket;
-
         return (
             <div className="container">
                 {
                     this.props.user === null? 
-                    <LoginForm socket={socket}/> :
+                    <LoginForm /> :
                     <div className="app">
-                        <Header socket={socket}/>
+                        <Header />
                         <div className="main-content">
                             <Sidebar/>
                         </div>                
@@ -67,15 +54,20 @@ export class RootComponent extends React.Component {
 
 const mapToStateProps = (state) => {
     let user = state.verifyUser.user;
+    let socket = state.socketApp.socket;
     return{
-        user
+        user,
+        socket
     };
 }
 
 const mapDispatchToProps = (dispatch) =>({
-    getUser: (user)=> {
+    getUser: (user) => {
         dispatch(getUser(user))
-    }    
+    },
+    setSocket: (socket) => {
+        dispatch(setSocket(socket))
+    }  
 });
 
 export const Root= connect(mapToStateProps, mapDispatchToProps)(RootComponent);
