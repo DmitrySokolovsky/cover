@@ -1,6 +1,7 @@
 import React from 'react';
 import './chat.style.scss';
 import { MessageInput } from './messages/message-input/message-input.component';
+import { Userlist } from './userlist/userlist.component';
 
 export class Chat extends React.Component {
     constructor(props) {
@@ -19,6 +20,7 @@ export class Chat extends React.Component {
         const socket = this.props.socket; 
         return (
             <div className="chat">
+                <Userlist/>
                 <MessageInput/>
             </div>
         );

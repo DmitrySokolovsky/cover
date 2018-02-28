@@ -1,6 +1,7 @@
 import React from 'react';
 import { MESSAGE_SENT } from '../../../../services/events';
 import { connect } from 'react-redux';
+import './message-input.style.scss';
 
 class MessageInputComponent extends React.Component {
     constructor(props) {
@@ -21,9 +22,6 @@ class MessageInputComponent extends React.Component {
         let userTo = 'harry';
         let isRead = false;
         let date = new Date();
-        console.log('message', message);
-        console.log('userName', userName);
-        console.log('userTo', userTo);
 
         socket.emit(MESSAGE_SENT, message, userTo, userName, isRead, date);
 
@@ -40,7 +38,7 @@ class MessageInputComponent extends React.Component {
                 <button 
                     disabled={this.state.message.length > 1 ? false : true} 
                     className="message-input__btn" 
-                    onClick={this.sendMessage}>Send</button>
+                    onClick={this.sendMessage}>S</button>
             </div>
         );
     }

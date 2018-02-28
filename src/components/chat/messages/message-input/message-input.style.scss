@@ -1,0 +1,30 @@
+.message-input {
+    align-self: flex-end;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    &__textbox {
+        height: 3rem;
+        width: 80%;
+        flex-shrink: 2;
+    }
+
+    &__btn {
+        height: 3.5rem;
+        width: 3.5rem;
+        border-radius: 50%;
+        border: 1px solid green;
+        background-color: white;
+        color: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &:disabled {
+            border: 1px solid red;
+            color: black;
+        }
+    }
+}

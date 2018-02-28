@@ -28,12 +28,8 @@ export class LoginFormComponent extends React.Component {
         socket.emit(VERIFY_USER, name, password);
 
         socket.on(USER_CONNECTED, (data) => {
-            console.log(data.name);
             this.props.getUser({name: data.name});
-            console.log(this.props);
         });
-
-        console.log(this.props);
     }
 
     handleNameChange = (e) => {

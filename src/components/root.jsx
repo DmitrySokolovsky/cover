@@ -16,7 +16,10 @@ export class RootComponent extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            socket: null
+            socket: null,
+            user: {
+                name: 'test'
+            }
         };
     }
     
@@ -37,7 +40,7 @@ export class RootComponent extends React.Component {
         return (
             <div className="container">
                 {
-                    this.props.user === null? 
+                    this.props.user === null ? 
                     <LoginForm /> :
                     <div className="app">
                         <Header />
